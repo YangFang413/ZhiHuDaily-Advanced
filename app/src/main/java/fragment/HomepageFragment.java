@@ -105,6 +105,7 @@ public class HomepageFragment extends Fragment {
         imageViewPager.addOnPageChangeListener(new ImagePageChangeListener());
         contentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         bindRecycleViewAdapter();
+
         return view;
     }
 
@@ -248,7 +249,7 @@ public class HomepageFragment extends Fragment {
         }
     }
 
-    private class RecycleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class RecycleViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView newsSmallImage;
         private TextView newsTitle;
@@ -259,7 +260,15 @@ public class HomepageFragment extends Fragment {
             super(itemView);
             newsSmallImage = (ImageView) itemView.findViewById(R.id.news_image);
             newsTitle = (TextView) itemView.findViewById(R.id.news_title);
-            contentRecyclerView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), DetailNewsActivity.class);
+                    intent.putExtra("newsId", mNews.getId());
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            });
         }
 
         public void bindNews(final News news){
@@ -283,14 +292,6 @@ public class HomepageFragment extends Fragment {
                     });
                 }
             }).start();
-
-        }
-
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), DetailNewsActivity.class);
-            intent.putExtra("News", mNews.getId());
-            startActivity(intent);
         }
     }
 
