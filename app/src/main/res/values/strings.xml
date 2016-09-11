@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">知乎日报</string>
+    <string name="screen_open_text">知乎日报</string>
+    <string name="slogan">每天3次，每次7分钟</string>
+    <string name="network_unavailable">请检查网络是否连接</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
